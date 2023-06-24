@@ -1,0 +1,256 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Encryption and Decryption</title>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background-image: url('https://images.unsplash.com/photo-1640158615573-cd28feb1bf4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        textarea {
+            width: 90%;
+            border: 1px solid #d20707;
+            border-radius: 2px;
+            resize: vertical;
+            height: 120px; /* Adjust the height value as needed */
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .result-message {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .box-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .box {
+            flex: 1;
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Encryption and Decryption</h1>
+    <form action="/" method="post">
+        <textarea name="message" rows="5" placeholder="Enter your message" required></textarea>
+        <br>
+        <button type="submit">Encrypt and Decrypt</button>
+    </form>
+    <div class="result-container">
+        <div class="result-title">Encryption and Decryption Result</div>
+        <div class="box-container">
+            <div class="box" id="encrypted-box">
+                <div class="result-title">Encrypted Message</div>
+                <div class="result-message" id="encrypted-message"></div>
+            </div>
+            <div class="box" id="decrypted-box">
+                <div class="result-title">Decrypted Message</div>
+                <div class="result-message" id="decrypted-message"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $('form').submit(function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                url: '/',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    $('#encrypted-message').text(JSON.stringify(response.encrypted_message, null, 4));
+                    $('#decrypted-message').text(response.decrypted_message);
+                    $('#encrypted-box').show();
+                    $('#decrypted-box').show();
+                }
+            });
+        });
+    </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Encryption and Decryption</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1640158615573-cd28feb1bf4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        textarea {
+            width: 95%;
+            border: 1px solid #d20707;
+            border-radius: 3px;
+            resize: vertical;
+            height: 120px; /* Adjust the height value as needed */
+            padding: 10px; /* Optional: Add padding to the textarea */
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 10px; /* Optional: Add margin to the button */
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .result-message {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .box-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .box {
+            flex: 1;
+            padding: 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Encryption and Decryption</h1>
+    <form id="myForm" action="/" method="post">
+        <textarea name="message" rows="6" placeholder="Enter your message" required></textarea>
+        <br>
+    </form>
+    <div class="button-container">
+        <button type="button" onclick="encryptAndDecrypt()">Encrypt and Decrypt</button>
+    </div>
+    <div class="result-container">
+        <div class="result-title">Encryption and Decryption Result</div>
+        <div class="box-container">
+            <div class="box" id="encrypted-box">
+                <div class="result-title">Encrypted Message</div>
+                <div class="result-message" id="encrypted-message"></div>
+            </div>
+            <div class="box" id="decrypted-box">
+                <div class="result-title">Decrypted Message</div>
+                <div class="result-message" id="decrypted-message"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        function encryptAndDecrypt() {
+            var formData = new FormData(document.getElementById("myForm"));
+            $.ajax({
+                url: '/',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    $('#encrypted-message').text(JSON.stringify(response.encrypted_message, null, 4));
+                    $('#decrypted-message').text(response.decrypted_message);
+                    $('#encrypted-box').show();
+                    $('#decrypted-box').show();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
